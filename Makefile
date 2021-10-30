@@ -38,6 +38,11 @@ test:
 	make gh-pages
 	make clean
 
+data.json: data.tsv
+	bin/tsv-to-json < $< | \
+	    jq -c '.[]|[(.[1,2,3]),(select(.[0] != "")|true)]' \
+	    > $@
+
 new-test:
 	new-test-file
 
@@ -77,6 +82,7 @@ common:
 	cp $(COMMON)/bpan/run-or-docker.bash $(BPAN)/
 
 clean:
+	rm -f data.json
 	rm -fr data matrix gh-pages new testml
 	git worktree prune
 
