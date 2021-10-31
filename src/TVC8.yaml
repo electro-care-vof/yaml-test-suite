@@ -12,5 +12,5 @@
     -STR
   json: |
     "a\tb\tc"
-  norm: |
+  dump: |
     --- "a\tb\tc"
