@@ -52,7 +52,7 @@ new-test:
 	new-test-file
 
 testml:
-	suite-to-testml
+	suite-to-testml $(SRC)
 
 data:
 	git branch --track $@ origin/$@ 2>/dev/null || true
